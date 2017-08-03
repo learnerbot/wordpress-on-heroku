@@ -1,0 +1,19 @@
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+    "php": ">=5.4",
+    "johnpbloch/wordpress": "4.8.0",
+    "vlucas/phpdotenv": "^2.4"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp/site"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "^121.0"
+  }
+}
