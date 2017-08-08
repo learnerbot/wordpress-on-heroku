@@ -55,3 +55,7 @@ git push heroku master
 ```
 
 The contents of the `wp` directory will be deployed to an [NGINX](https://www.nginx.com/) server with the help of the `Procfile`.
+
+### Heroku Add-ons
+
+`TODO`
