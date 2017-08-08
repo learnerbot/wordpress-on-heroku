@@ -2,33 +2,56 @@
 
 ## Overview
 
-This project is currently **under development**.
+This is a simple example to understand the basics of **WordPress** powered by **Heroku**.
 
-## Getting started on Heroku with PHP
+## Dependencies
 
-https://devcenter.heroku.com/articles/getting-started-with-php#introduction
+### Runtime dependencies
 
-A few of the important commands:
+The following libraries are used in the application.
+
+*[WordPress](https://wordpress.com/)*: WordPress is an online, open source website creation tool written in PHP.
+
+*[Heroku](https://www.heroku.com/)*: Heroku is a cloud platform that lets you build, deliver, monitor and scale apps.
+
+*[vlucas/phpdotenv](https://github.com/vlucas/phpdotenv)*: Loads environment variables from `.env` to `getenv()`, `$_ENV` and `$_SERVER` automagically.
+
+### Dev dependencies
+
+The following libraries are used for the development of this project.
+
+*[composer](https://getcomposer.org/)*: Dependency Manager for PHP.
+
+## How to...
+
+### Configure
+
+The important variables from `wp/wp-config.php` were moved to environment variables. You can either specify these with the help of a `wp/.env` file or via environment vriables. There's a sample `wp/.env.sample` file to give a complete list of the variables.
+
+The `wp-content` directory was moved outside from the core WordPress installation. This is handled in the `wp-config.php` file. If there's no `wp/wp-content/theme/` directory then it will fall back to the original `wp/site/wp-content` directory located in the WordPress core installation.
+
+### Build and deploy app to Heroku
+
+[Heroku CLI tool](https://devcenter.heroku.com/articles/heroku-cli) can help you build and deploy the app.
+
+First you need to login with your Heroku credentials.
 
 ```
 heroku login
+```
+
+Then you can create project in Heroku.
+
+```
 heroku create
 ```
 
-## Other links
+This command will create a project in Heroku with some random name and create a remote git repository to which you can push the code thus deploying the app.
 
-https://codex.wordpress.org/Giving_WordPress_Its_Own_Directory
+Push to Heroku remote repository.
 
-https://codex.wordpress.org/Editing_wp-config.php#Moving_wp-content_folder
+```
+git push heroku master
+```
 
-https://m.dotdev.co/secure-your-wordpress-config-with-dotenv-d939fcb06e24
-
-https://mchung.github.io/heroku-buildpack-wordpress/
-
-https://github.com/heroku/php-getting-started/blob/master/composer.json
-
-http://composer.rarst.net/recipe/site-stack
-
-https://roots.io/using-composer-with-wordpress/
-
-https://github.com/mhoofman/wordpress-heroku
+The contents of the `wp` directory will be deployed to an [NGINX](https://www.nginx.com/) server with the help of the `Procfile`.
